@@ -14,7 +14,7 @@ my $app = Plack::Util::load_psgi($psgi_file);
 my $mech = Test::WWW::Mechanize::PSGI->new(app => $app);
 my $json = $jsonxs->encode({name => 'hikarie'});
 
-my $res = $mech->post('/', Content_Type => 'application_json', Content => $json);
+my $res = $mech->post('/', Content_Type => 'application/json', Content => $json);
 ok $res->is_success;
 
 my $res_json = $jsonxs->decode($res->content);
